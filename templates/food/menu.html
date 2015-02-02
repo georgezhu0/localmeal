@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html>
+    {% extends "base.html" %}
+    {% load staticfiles %}
+    <head>
+        <title>{% block title %}Menu{% endblock %}</title>
+    </head>
+
+    <body>
+        {% block body %}
+            <div class="row">    
+                <div class="extra-padding large-8 large-offset-2 columns">
+                      <h2 class="text-center">{{ boldmessage }}</h2> 
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="small-7 small-centered columns">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Provider</th>
+                                <th>Photo</th>
+                                <th>Menu</th>
+                                <th>Meals left</th>
+                                <th>Order</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="http://www.swarthmore.edu">Swarthmore College</a></td>
+                                <td><a class="th" href="{% static '/../../static/media/asian_bar.jpg' %}">
+  <img src="{% static '/../../static/media/asian_bar.jpg' %}">
+</a></td>
+                                <td>{{ swatmenu }}</td>
+                                <td>{{ swatnum }}</td>
+                                {% if user.is_authenticated %}
+                                    <td><a class = "button round" href="/clients/order/swat">Order</a></td>
+                                {% else %}
+                                    <td><a class = "button round" href="/clients/login">Login to Order</a></td>
+                                {% endif %}
+                            </tr>
+                            <tr>
+                                <td><a href="http://www.haverford.edu">Haverford College</a></td>
+                                <td><a class="th" href="{% static '/../../static/media/pasta.jpg' %}">
+  <img src="{% static '/../../static/media/pasta.jpg' %}">
+                                <td>{{ havmenu }}</td>
+                                <td>{{ havnum }}</td>
+                                {% if user.is_authenticated %}
+                                    <td><a class = "button round" href="/clients/order/hav">Order</a></td>
+                                {% else %}
+                                    <td><a class = "button round" href="/clients/login">Login to Order</a></td>
+                                {% endif %}
+                            </tr>
+                        </tbody>
+                    </table>  
+                </div>
+            </div>
+        {% endblock %}
+    </body>
+
+</html>

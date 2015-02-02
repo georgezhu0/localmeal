@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+	{% extends "base.html" %}
+    <head>
+        <title>{% block title%}Log{% endblock %}</title>
+    </head>
+
+    <body>
+        {% block body %}
+	        <div class="row">
+	            <div class="large-6 small-centered columns">
+	                <h2 class = "text-center">Order History</h2>
+	            </div>
+	        </div>
+
+	        <div class="row">
+	            <div id='mainpanels' class="panel large-8 large-centered columns">
+	                <table>
+						<tbody>
+			                {% for transaction in transactions %}
+					            <tr><td>{{ transaction }}</td></tr>
+					        {% endfor %}
+			        	</tbody>
+			        </table>
+	            </div>
+	        </div>
+	        
+        {% endblock %}
+    </body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% extends "base.html" %}
+    {% load staticfiles %}
+
+    <head>
+        <title>{% block title %}Login{% endblock %}</title>
+    </head>
+
+    <body>
+        {% block body %}
+        <div class="row">
+            <div class="small-3 small-centered columns">
+                <h2 class="text-center">Login</h2>
+            </div>
+        </div>
+
+    {% if type == 1%} 
+        <form id="login_form" method="post" action="/clients/login/">
+            {% csrf_token %}
+             <div class="row">
+                <div class="small-4 small-centered columns">
+                    Username: <input type="text" name="username" value="" size="50" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-4 small-centered columns">
+                    Password: <input type="password" name="password" value="" size="50" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="small-4 small-centered columns">
+                    <input class= "button round" type="submit" value="submit" />
+                    <p class=>Don't have an account? Register below.</p>
+                    <a class= "button round" href="/clients/register/">register</a>
+                </div>
+            </div>
+        </form>
+    {% else %}
+        <form id="login_form" method="post" action="/drivers/login/">
+            {% csrf_token %}
+             <div class="row">
+                <div class="small-3 small-centered columns">
+                    Username: <input type="text" name="username" value="" size="50" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-3 small-centered columns">
+                    Password: <input type="password" name="password" value="" size="50" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="small-3 small-centered columns">
+                    <input class= "button round" type="submit" value="submit" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-3 small-centered columns">
+                    <a class= "button round" href="/drivers/register/">register</a>
+                </div>
+            </div>
+        </form>
+    {% endif %}    
+        {% endblock %}
+    </body>
+</html>

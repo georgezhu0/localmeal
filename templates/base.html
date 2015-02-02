@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:700italic,400' rel='stylesheet' type='text/css'>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'foundation/css/foundation.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app.css' %}"/> 
+
+    <title>{% block title %}{% endblock %}</title>
+    <nav class="top-bar" data-topbar role="navigation">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="/">localmeal</a></h1>
+        </li>
+         <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      </ul>
+
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class><a href="/clients/menu/">Menu</a></li>
+          <li class><a href="/clients/log/">Order History</a></li>
+          {% if not user.is_authenticated %}
+            <li class="active"><a href="/clients/login">Log In</a></li>
+          {% else %}z
+            <li class="active"><a href="/clients/logout">Log Out</a></li>
+          {% endif %}
+        </ul>
+      </section>
+    </nav>
+</head>
+
+<body>
+	{% block body %}{% endblock %}
+</body>
+
+<footer class="row">
+    <div class="large-12 columns">
+      <hr />
+      <div class="row">
+        <div class="large-6 columns">
+          <p class = "text-left columns">© <i>Five Guys</i> Tri-Co Hackathon 2015 Entry</p>
+        </div>
+        <div class="large-6 columns">
+          <a class = "text-right columns" href="/">Home</a> 
+        </div>
+      </div>
+    </div> 
+</footer>
+
+</html>

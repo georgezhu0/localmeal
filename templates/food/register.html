@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% extends "base.html" %}
+    {% load staticfiles %}
+    <head>
+        <title>{% block title %}Register an account{% endblock %}</title>
+    </head>
+
+    <body>
+        {% block body %}
+            <div class = "row">
+                <div class = "text-center large-6 small-centered columns">
+                <h2>Register with localmeal</h2>
+                </div>
+            </div>
+            {% if registered %}
+                <div class ="row">
+                    <div class = "large-6 large-offset-3 columns">
+                        <strong>Thank you for registering!</strong>
+                    </div>
+                </div>
+                <div class ="row">
+                    <div class = "large-6 large-offset-3 columns">
+                        <a href="/">Return to the homepage.</a><br />
+                    </div>
+                </div>
+            {% else %}
+                <div class ="row">
+                    <div class = "large-6 large-offset-3 columns">
+                        <strong>Register here!</strong><br />
+                    </div>
+                </div>
+                
+                {% if type == 'consumer' %}
+                    <form id="consumer_form" method="post" action="/clients/register/"
+                            enctype="multipart/form-data">
+
+                        {% csrf_token %}
+
+                        <!-- Display each form. The as_p method wraps each element in a paragraph
+                             (<p>) element. This ensures each element appears on a new line,
+                             making everything look neater. -->
+                        <div class="row">
+                            <div class="small-6 small-centered columns">
+                                {{ user_form.as_p }}
+                                {{ consumer_form.as_p }}
+                            </div>
+                        </div>
+                        <!-- Provide a button to click to submit the form. -->
+                        <div class="row">
+                            <div class="small-6 small-centered columns">
+                                <input class= "button round" type="submit" name="submit" value="Register" />
+                            </div>
+                        </div>
+                    </form>
+                {% elif type == 'driver' %}
+                    <form id="driver_form" method="post" action="/drivers/register/"
+                            enctype="multipart/form-data">
+
+                        {% csrf_token %}
+
+                        <!-- Display each form. The as_p method wraps each element in a paragraph
+                             (<p>) element. This ensures each element appears on a new line,
+                             making everything look neater. -->
+                        <div class="row">
+                            <div class="small-6 small-centered columns">
+                                {{ user_form.as_p }}
+                                {{ driver_form.as_p }}
+                            </div>
+                        </div>
+                        <!-- Provide a button to click to submit the form. -->
+                        <div class="row">
+                            <div class="small-6 small-centered columns">
+                                <input class= "button round" type="submit" name="submit" value="Register" />
+                            </div>
+                        </div>
+                    </form>%}
+                {% endif %}
+
+            {% endif %}
+        {% endblock %}
+    </body>
+</html>

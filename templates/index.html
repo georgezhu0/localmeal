@@ -1,0 +1,48 @@
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:700italic,400' rel='stylesheet' type='text/css'>
+{% extends "base.html" %}
+
+<head>
+  
+  <title>{% block title %}localmeal | Welcome{% endblock %}</title>
+
+</head>
+<body id="index">
+{% block body %}
+
+<div class="row">    
+    <div class="extra-padding large-8 small-centered columns">
+          <h1 class="text-center logo" style="color:white"><b>localmeal</b></h1>
+          <h3 class="text-center extra-padding-bottom"><small>eliminating foodwaste in the tri-co</small></h3>  
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-6 large-offset-3 columns">
+        {% if not user.is_authenticated %}
+            <ul class="button-group even-3">
+                <li><a href="/clients/register/" class="button">register</a></li>
+                <li><a href="/clients/login/" class="button">login</a></li>
+                <li><a href="/drivers/login/" class="button">login (driver)</a></li>
+            </ul>
+        {% else %}
+            <ul class="button-group even-2">
+                <li><a href="/clients/menu/" class="button">place an order</a></li>
+                <li><a href="/clients/logout/" class="button">log out</a></li>
+            </ul>
+        {% endif %}
+    </div>
+</div>
+
+<div class="row">
+    <h3 class="text-center">How localmeal works</h3>
+</div>
+
+<div class = "row">
+    <div id='mainpanels' class="panel small-6 small-centered columns">
+        By law, colleges and other institutions are required to throw away leftover food at the end of each business day. At the same time, there are families in need of food living in close range to these colleges. Localmeal works with colleges to schedule deliveries of this leftover food to families in need, eliminating food waste while bettering the community.
+    </div>
+</div>
+    
+</div>
+{% endblock %}
+</body>

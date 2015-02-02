@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    {% extends "base.html" %}
+    <head>
+        <title>{% block title %}Thanks!{% endblock %}</title>
+    </head>
+
+    <body>
+        {% block body %}
+        <div class="row">
+            <div class="small-6 small-centered columns">
+                <h1 class="text-center">Thanks!</h1>
+                <div class="row panel">
+                	<p class="text-center">Your meal is on its way.</p>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+    </body>
+
+</html>

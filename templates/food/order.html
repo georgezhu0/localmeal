@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    {% extends "base.html" %}
+    <head>
+        <title>{% block title %}Order{% endblock %}</title>
+    </head>
+
+    <body>
+        {% block body %}
+        <div class="row">
+            <div class="small-6 small-centered columns">
+                <h2 class="text-center">Place your order</h2>
+                    {% if school == 'Swarthmore'%} 
+                    <!-- swat id = 1 -->
+                        <form id="order_form" method="post" action="/clients/order/swat">
+                            {% csrf_token %}
+                            {{ order_form.as_p }}
+                    {%else%}
+                            <form id="order_form" method="post" action="/clients/order/hav">
+                            {% csrf_token %}
+                            {{ order_form.as_p }}
+
+                    {%endif%}
+                            <input class= "button round" type="submit" name="submit" value="Order" />
+                        </form>
+            </div>
+        </div>
+        {% endblock %}
+    </body>
+
+</html>
