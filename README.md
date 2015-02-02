@@ -1,2 +1,0 @@
-# localmeal
-LocalMeal Web
